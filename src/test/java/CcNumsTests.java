@@ -15,9 +15,11 @@ public class CcNumsTests {
     
         CcNums testObject = new CcNums();
         
-        //CcNumber number = testObject.getCcNumber(testNumber);
+        CcNumber number = testObject.getCcNumber(testNumber);
         
         assertTrue(testObject != null);
+        assertTrue(number != null);
+        assertTrue(number.getNumber().equals(testNumber));
 
     }
 
