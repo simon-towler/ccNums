@@ -19,9 +19,10 @@ public class CcNums {
     }
 
     public static CcNumber getCcNumber(String number) {
-        if (!CcNumValidator.isValid(number)) {
+        String issuer = CcNumIssuerValidator.getIssuerValidFor(number);
+        if (null != issuer) {
             return new CcNumber(number);
         }
-        return new CcNumber(number);
+        return null;
     }
 }
