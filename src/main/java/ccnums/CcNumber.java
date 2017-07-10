@@ -4,12 +4,11 @@ public class CcNumber {
 
     final Boolean valid = false;
     String number = null;
-    String issuer = null;
+    private static final String issuer = null;
 
     CcNumber(String number) {
         if (null != ccnums.CcNumIssuerValidator.getIssuerValidFor(number)) {
             setNumber(number);
-            setIssuer(ccnums.CcNumIssuerValidator.getIssuerValidFor(number));
         }
     }
 
@@ -25,12 +24,8 @@ public class CcNumber {
         return(this.number);
     }
 
-    private void setIssuer(String issuer) {
-        this.issuer = issuer;
-    }
-
     public String getIssuer() {
-        return this.issuer;
+        return issuer;
     }
 
 }

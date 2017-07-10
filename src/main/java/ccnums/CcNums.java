@@ -21,7 +21,12 @@ public class CcNums {
     public static CcNumber getCcNumber(String number) {
         String issuer = CcNumIssuerValidator.getIssuerValidFor(number);
         if (null != issuer) {
-            return new CcNumber(number);
+            switch (issuer) {
+                case "AmericanExpress":
+                    return new AmexCcNumber(number);
+                default:
+                    return new CcNumber(number);
+            }
         }
         return null;
     }
