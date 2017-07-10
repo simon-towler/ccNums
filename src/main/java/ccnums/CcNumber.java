@@ -7,9 +7,9 @@ public class CcNumber {
     String issuer = null;
 
     CcNumber(String number) {
-        if (null != CcNumIssuerValidator.getIssuerValidFor(number)) {
+        if (null != ccnums.CcNumIssuerValidator.getIssuerValidFor(number)) {
             setNumber(number);
-            setIssuer(CcNumIssuerValidator.getIssuerValidFor(number));
+            setIssuer(ccnums.CcNumIssuerValidator.getIssuerValidFor(number));
         }
     }
 
