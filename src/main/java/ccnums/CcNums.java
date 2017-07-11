@@ -15,7 +15,6 @@ public class CcNums {
         FileInputStream in = new FileInputStream("../resources/issuer_ccnum_patterns.properties");
         issuersCcNumPatterns.load(in);
         in.close();
-        System.out.println("Done");//TODO: remove
     }
 
     public static CcNumber getCcNumber(String number) {
