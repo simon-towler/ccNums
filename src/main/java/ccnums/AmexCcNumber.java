@@ -10,4 +10,8 @@ package ccnums;
         AmexCcNumber(String number) {
         super(number);
     }
+
+        public String getIssuer() {
+            return this.issuer;
+        }
 }

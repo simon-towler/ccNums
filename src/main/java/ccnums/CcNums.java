@@ -17,15 +17,20 @@ public class CcNums {
         in.close();
     }
 
+    public static String getCcIssuer(String number) {
+        return ccnums.CcNumIssuerValidator.getIssuerValidFor(number);
+    }
+
     public static CcNumber getCcNumber(String number) {
-        String issuer = CcNumIssuerValidator.getIssuerValidFor(number);
+        CcNumber ccNumber;
+        String issuer = getCcIssuer(number);
         if (null != issuer) {
-            switch (issuer) {
-                case "AmericanExpress":
-                    return new AmexCcNumber(number);
-                default:
-                    return new CcNumber(number);
+            if (issuer.equals("AmericanExpress")) {
+                ccNumber = new AmexCcNumber(number);
+            } else {
+                    ccNumber = new CcNumber(number);
             }
+            return ccNumber;
         }
         return null;
     }

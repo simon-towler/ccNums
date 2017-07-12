@@ -4,7 +4,7 @@ public class CcNumber {
 
     final Boolean valid = false;
     String number = null;
-    private static final String issuer = null;
+    private static final String issuer = "Undetermined";
 
     CcNumber(String number) {
         if (null != ccnums.CcNumIssuerValidator.getIssuerValidFor(number)) {
