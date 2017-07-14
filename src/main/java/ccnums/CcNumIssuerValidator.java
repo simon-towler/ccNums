@@ -5,6 +5,14 @@ import java.util.regex.Pattern;
 
 public class CcNumIssuerValidator {
 
+    public static boolean numberIsValid(String number) {
+        //returns true is number is valid for an issuer
+        //and passes a Luhn check
+        if(!passesLuhnCheck(number)) return false;
+        if (null == getIssuerValidFor(number)) return false;
+        return true;
+    }
+
     public static String getIssuerValidFor(String number) {
 
         //TODO identify the issuer and
@@ -21,7 +29,7 @@ public class CcNumIssuerValidator {
     }
 
     //Method taken from http://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#Java, accessed 11 July 2017
-    public static boolean luhnTest(String number){
+    public static boolean passesLuhnCheck(String number){
         int s1 = 0, s2 = 0;
         String reverse = new StringBuffer(number).reverse().toString();
         for(int i = 0 ;i < reverse.length();i++){

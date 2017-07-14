@@ -6,6 +6,9 @@ import java.lang.System;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static ccnums.CcNumIssuerValidator.numberIsValid;
+import static ccnums.CcNumIssuerValidator.passesLuhnCheck;
+
 public class CcNums {
 
     public static void main(String [] args) throws FileNotFoundException, IOException {
@@ -22,16 +25,8 @@ public class CcNums {
     }
 
     public static CcNumber getCcNumber(String number) {
-        CcNumber ccNumber;
-        String issuer = getCcIssuer(number);
-        if (null != issuer) {
-            if (issuer.equals("AmericanExpress")) {
-                ccNumber = new AmexCcNumber(number);
-            } else {
-                    ccNumber = new CcNumber(number);
-            }
-            return ccNumber;
-        }
+        if (numberIsValid(number)) return CcNumber.createNumber(number);
+        //TODO what if the number is not valid? how to tell the user
         return null;
     }
 }

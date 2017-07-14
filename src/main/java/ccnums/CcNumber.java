@@ -1,5 +1,8 @@
 package ccnums;
 
+import static ccnums.CcNumIssuerValidator.getIssuerValidFor;
+import static ccnums.CcNumIssuerValidator.numberIsValid;
+
 public class CcNumber {
 
     final Boolean valid = false;
@@ -12,12 +15,19 @@ public class CcNumber {
         }
     }
 
-    String normalize(String number) {
-        return(number);//TODO add normalization logic here
+    static CcNumber createNumber(String number) {
+
+        if (numberIsValid(number)) {
+            switch (getIssuerValidFor(number)) {
+                case "AmericanExpress":
+                    return new AmexCcNumber(number);
+            }
+        }
+        return null;
     }
 
-    void setNumber(String number) {
-        this.number = normalize(number);
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getNumber() {
