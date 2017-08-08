@@ -1,7 +1,7 @@
 package ccnums;
 
-import static ccnums.CcNumIssuerValidator.getIssuerValidFor;
-import static ccnums.CcNumIssuerValidator.numberIsValid;
+import static ccnums.CcNumsValidator.getIssuerValidFor;
+import static ccnums.CcNumsValidator.numberIsValid;
 
 public class CcNumber {
 
@@ -10,7 +10,7 @@ public class CcNumber {
     private static final String issuer = "Undetermined";
 
     CcNumber(String number) {
-        if (null != ccnums.CcNumIssuerValidator.getIssuerValidFor(number)) {
+        if (null != ccnums.CcNumsValidator.getIssuerValidFor(number)) {
             setNumber(number);
         }
     }

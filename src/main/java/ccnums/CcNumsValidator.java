@@ -3,7 +3,7 @@ package ccnums;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CcNumIssuerValidator {
+public class CcNumsValidator {
 
     public static boolean numberIsValid(String number) {
         //returns true is number is valid for an issuer

@@ -2,12 +2,10 @@ package ccnums;
 
 import java.util.Properties;
 import java.io.FileInputStream;
-import java.lang.System;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static ccnums.CcNumIssuerValidator.numberIsValid;
-import static ccnums.CcNumIssuerValidator.passesLuhnCheck;
+import static ccnums.CcNumsValidator.numberIsValid;
 
 public class CcNums {
 
@@ -21,7 +19,7 @@ public class CcNums {
     }
 
     public static String getCcIssuer(String number) {
-        return ccnums.CcNumIssuerValidator.getIssuerValidFor(number);
+        return ccnums.CcNumsValidator.getIssuerValidFor(number);
     }
 
     public static CcNumber getCcNumber(String number) {

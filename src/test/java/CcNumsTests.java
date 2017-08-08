@@ -28,8 +28,8 @@ public class CcNumsTests {
 
     @Test
     public void testLuhn() {
-        assertTrue(ccnums.CcNumIssuerValidator.passesLuhnCheck("49927398716"));
-        assertFalse(ccnums.CcNumIssuerValidator.passesLuhnCheck("49927398717"));
+        assertTrue(ccnums.CcNumsValidator.passesLuhnCheck("49927398716"));
+        assertFalse(ccnums.CcNumsValidator.passesLuhnCheck("49927398717"));
     }
 
 }
