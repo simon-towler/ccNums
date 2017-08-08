@@ -19,7 +19,7 @@ public class CcNums {
     }
 
     public static String getCcIssuer(String number) {
-        return ccnums.CcNumsValidator.getIssuerValidFor(number);
+        return ccnums.CcNumsValidator.getIssuer(number);
     }
 
     public static CcNumber getCcNumber(String number) {

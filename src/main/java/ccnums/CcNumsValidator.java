@@ -9,11 +9,11 @@ public class CcNumsValidator {
         //returns true is number is valid for an issuer
         //and passes a Luhn check
         if(!passesLuhnCheck(number)) return false;
-        if (null == getIssuerValidFor(number)) return false;
+        if (null == getIssuer(number)) return false;
         return true;
     }
 
-    public static String getIssuerValidFor(String number) {
+    public static String getIssuer(String number) {
 
         //TODO identify the issuer and
         // check if the number is valid for the issuer

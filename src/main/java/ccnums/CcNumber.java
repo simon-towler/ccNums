@@ -1,6 +1,5 @@
 package ccnums;
 
-import static ccnums.CcNumsValidator.getIssuerValidFor;
 import static ccnums.CcNumsValidator.numberIsValid;
 
 public class CcNumber {
@@ -10,7 +9,7 @@ public class CcNumber {
     private static final String issuer = "Undetermined";
 
     CcNumber(String number) {
-        if (null != ccnums.CcNumsValidator.getIssuerValidFor(number)) {
+        if (null != ccnums.CcNumsValidator.getIssuer(number)) {
             setNumber(number);
         }
     }
@@ -18,7 +17,7 @@ public class CcNumber {
     static CcNumber createNumber(String number) {
 
         if (numberIsValid(number)) {
-            switch (getIssuerValidFor(number)) {
+            switch (ccnums.CcNumsValidator.getIssuer(number)) {
                 case "AmericanExpress":
                     return new AmexCcNumber(number);
             }

@@ -11,10 +11,10 @@ public class CcNumsTests {
     
     @Test
     public void testCcNums() {
+
         String testNumber = "376039019752033";//amex australia card
         
         CcNumber number = CcNums.getCcNumber(testNumber);
-        
 
         assertTrue(number != null);
         assertTrue(number.getNumber().equals(testNumber));
