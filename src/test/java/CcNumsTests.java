@@ -12,16 +12,13 @@ public class CcNumsTests {
     @Test
     public void testCcNums() {
         String testNumber = "376039019752033";//amex australia card
-    
-        CcNums testObject = new CcNums();
-        assertTrue(testObject != null);
         
-        CcNumber number = testObject.getCcNumber(testNumber);
+        CcNumber number = CcNums.getCcNumber(testNumber);
         
 
         assertTrue(number != null);
         assertTrue(number.getNumber().equals(testNumber));
-        assertTrue(testObject.getCcIssuer(testNumber).equals("AmericanExpress"));
+        assertTrue(CcNums.getCcIssuer(testNumber).equals("AmericanExpress"));
         assertTrue(number.getIssuer().equals("AmericanExpress"));
 
     }
