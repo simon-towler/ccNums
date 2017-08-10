@@ -1,9 +1,28 @@
 package ccnums;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CcNumsValidator {
+    //instance variables
+    static Properties ccNumPatterns;
+
+    // create and load properties
+    // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
+    static {
+        try {
+            ccNumPatterns = new Properties();
+            FileInputStream in = new FileInputStream("../resources/issuer_ccnum_patterns.properties");
+            ccNumPatterns.load(in);
+            in.close();
+        } catch(IOException e) {
+            //TODO improve
+        }
+    }
 
     public static boolean numberIsValid(String number) {
         //returns true is number is valid for an issuer
