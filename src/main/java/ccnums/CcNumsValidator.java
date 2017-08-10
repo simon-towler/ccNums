@@ -14,7 +14,6 @@ public class CcNumsValidator {
     }
 
     public static String getIssuer(String number) {
-
         //TODO identify the issuer and
         // check if the number is valid for the issuer
         final Pattern amexPattern =
@@ -24,7 +23,6 @@ public class CcNumsValidator {
         if(matcher.matches()) {
             return "AmericanExpress";
         }
-
         return null;
     }
 
