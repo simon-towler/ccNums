@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.InputStream;
 
 public class CcNumsValidator {
     //instance variables
@@ -16,11 +17,13 @@ public class CcNumsValidator {
     static {
         try {
             ccNumPatterns = new Properties();
-            FileInputStream in = new FileInputStream("../resources/issuer_ccnum_patterns.properties");
+            //TODO make the path independent of my machine
+            FileInputStream in = new FileInputStream("/Users/simontowler/IdeaProjects/ccNums/src/main/resources/issuer_ccnum_patterns.properties");
             ccNumPatterns.load(in);
             in.close();
         } catch(IOException e) {
             //TODO improve
+            System.out.println(e.getMessage());
         }
     }
 
@@ -33,15 +36,16 @@ public class CcNumsValidator {
     }
 
     public static String getIssuer(String number) {
-        //TODO identify the issuer and
-        // check if the number is valid for the issuer
-        final Pattern amexPattern =
-                Pattern.compile("^3[47][0-9]{13}$");
-        Matcher matcher =
-                amexPattern.matcher(number);
-        if(matcher.matches()) {
-            return "AmericanExpress";
+        for (String propertyName : ccNumPatterns.stringPropertyNames()) {
+            Pattern pattern =
+                    Pattern.compile(ccNumPatterns.getProperty(propertyName));
+            Matcher matcher =
+                    pattern.matcher(number);
+            if (matcher.matches()) {
+                return propertyName;
+            }
         }
+        //TODO replace
         return null;
     }
 
