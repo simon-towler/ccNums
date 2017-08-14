@@ -23,7 +23,6 @@ public class CcNumsTests {
 
         assertTrue(number != null);
         assertTrue(number.getNumber().equals(testNumber));
-        assertTrue(CcNums.getCcIssuer(testNumber).equals("AmericanExpress"));
         assertTrue(number.getIssuer().equals("AmericanExpress"));
 
     }

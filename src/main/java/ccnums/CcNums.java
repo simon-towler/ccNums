@@ -14,13 +14,10 @@ public class CcNums {
         //TODO
     }
 
-    public static String getCcIssuer(String number) {
-        return ccnums.CcNumsValidator.getIssuer(number);
-    }
-
     public static CcNumber getCcNumber(String number) {
         if (numberIsValid(number)) return CcNumber.createNumber(number);
         //TODO what if the number is not valid? how to tell the user
+        //TODO don't return null, do something else
         return null;
     }
 }

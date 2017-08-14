@@ -1,12 +1,10 @@
 package ccnums;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.InputStream;
 
 public class CcNumsValidator {
     //instance variables
@@ -35,7 +33,7 @@ public class CcNumsValidator {
         return true;
     }
 
-    public static String getIssuer(String number) {
+    static String getIssuer(String number) {
         for (String propertyName : ccNumPatterns.stringPropertyNames()) {
             Pattern pattern =
                     Pattern.compile(ccNumPatterns.getProperty(propertyName));

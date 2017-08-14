@@ -8,12 +8,12 @@ public class CcNumber {
     String number = null;
     private static final String issuer = "Undetermined";
 
+    //constructor
     CcNumber(String number) {
-        if (null != ccnums.CcNumsValidator.getIssuer(number)) {
             setNumber(number);
-        }
     }
 
+    //factory method
     static CcNumber createNumber(String number) {
 
         if (numberIsValid(number)) {
