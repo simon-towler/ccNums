@@ -23,9 +23,11 @@ public class CcNumsTests {
 
         assertTrue(number != null);
         assertTrue(number.getNumber().equals(testNumber));
-        assertTrue(number.getNumberGrouped().equals("3760 390197 52033"));
         //TODO remove
-        //System.out.println(number.getNumberGrouped());
+            //System.out.println(number.getGroupingPattern());
+            //System.out.println(number.getNumberGrouped());
+        assertTrue(number.getNumberGrouped().equals("3760 390197 52033"));
+
         assertTrue(number.getIssuer().equals("AmericanExpress"));
 
     }
