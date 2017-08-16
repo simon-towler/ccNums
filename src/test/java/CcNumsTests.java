@@ -21,15 +21,16 @@ public class CcNumsTests {
         
         CcNumber number = CcNums.getCcNumber(testNumber);
 
-        assertTrue(number != null);
-        assertTrue(number.getNumber().equals(testNumber));
-        //TODO remove
-            //System.out.println(number.getGroupingPattern());
-            //System.out.println(number.getNumberGrouped());
-        assertTrue(number.getNumberGrouped().equals("3760 390197 52033"));
-
         assertTrue(number.getIssuer().equals("AmericanExpress"));
 
+        assertTrue(number != null);
+        //TODO remove
+            System.out.println(number.getNumber());
+        assertTrue(number.getNumber().equals(testNumber));
+        //TODO remove
+            System.out.println(number.getGroupingPattern());
+            System.out.println(number.getNumberGrouped());
+        assertTrue(number.getNumberGrouped().equals("3760 390197 52033"));
     }
 
     @Test

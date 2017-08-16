@@ -9,12 +9,14 @@ class AmexCcNumber extends ccnums.CcNumber {
     String number;
 
     private static final String issuer = "AmericanExpress";//TODO make constants for issuer strings
-    String grouping = groupingPatterns.getProperty(this.getIssuer());
 
+    String grouping = groupingPatterns.getProperty(getIssuer());
 
+    //constructor
     AmexCcNumber(String number) {
         setNumber(number);
     }
+
     @Override
     public void setNumber(String number) {
         this.number = number;
@@ -22,12 +24,12 @@ class AmexCcNumber extends ccnums.CcNumber {
 
 
     public String getIssuer() {
-            return this.issuer;
+            return issuer;
         }
 
     @Override
     public String getNumber() {
-        return(this.number);
+        return(number);
     }
 
     @Override
@@ -36,5 +38,5 @@ class AmexCcNumber extends ccnums.CcNumber {
     }
     //TODO remove
     @Override
-    String getGroupingPattern() {return this.grouping;}
+    String getGroupingPattern() {return grouping;}
 }
