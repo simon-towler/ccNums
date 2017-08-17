@@ -7,14 +7,10 @@ import java.util.Properties;
 import static ccnums.CcNumsValidator.numberIsValid;
 
 public abstract class CcNumber {
-
-    final Boolean valid = false;
+    // instance variables
     String number = null;
-    private static String issuer;
-
+    static String issuer;
     String grouping;
-
-    //instance variables
     static Properties groupingPatterns;
 
     // create and load properties
@@ -47,17 +43,15 @@ public abstract class CcNumber {
         return null;
     }
 
-    public abstract void setNumber(String number);
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public String getNumber() {
-        return(this.number);
+        return(number);
     }
 
-    public String getNumberGrouped() {
-        return number.replaceAll(grouping, "$1 $2 $3");
-    }
-    //TODO remove
-    String getGroupingPattern() {return grouping;}
+    abstract String getNumberGrouped();
 
     public String getIssuer() {
         return issuer;

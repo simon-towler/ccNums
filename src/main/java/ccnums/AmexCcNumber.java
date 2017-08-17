@@ -7,9 +7,7 @@ class AmexCcNumber extends ccnums.CcNumber {
 
     //instance variables
     String number;
-
-    private static final String issuer = "AmericanExpress";//TODO make constants for issuer strings
-
+    static final String issuer = "AmericanExpress";//TODO make constants for issuer strings
     String grouping = groupingPatterns.getProperty(getIssuer());
 
     //constructor
@@ -36,7 +34,5 @@ class AmexCcNumber extends ccnums.CcNumber {
     public String getNumberGrouped() {
         return number.replaceAll(grouping, "$1 $2 $3");
     }
-    //TODO remove
-    @Override
-    String getGroupingPattern() {return grouping;}
+
 }

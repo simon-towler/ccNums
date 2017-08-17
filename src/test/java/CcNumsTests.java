@@ -25,11 +25,11 @@ public class CcNumsTests {
 
         assertTrue(number != null);
         //TODO remove
-            System.out.println(number.getNumber());
+            System.out.println("The credit card number is: " + number.getNumber());
         assertTrue(number.getNumber().equals(testNumber));
         //TODO remove
-            System.out.println(number.getGroupingPattern());
-            System.out.println(number.getNumberGrouped());
+            //System.out.println(number.getGroupingPattern());
+            System.out.println("That number when grouped is: " + number.getNumberGrouped());
         assertTrue(number.getNumberGrouped().equals("3760 390197 52033"));
     }
 
