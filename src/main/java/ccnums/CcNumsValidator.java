@@ -25,9 +25,11 @@ public class CcNumsValidator {
         }
     }
 
+    /*
+     * Returns true if number is valid for an issuer
+     * AND passes a Luhn check
+    */
     public static boolean numberIsValid(String number) {
-        //returns true is number is valid for an issuer
-        //and passes a Luhn check
         if(!passesLuhnCheck(number)) return false;
         if (null == getIssuer(number)) return false;
         return true;

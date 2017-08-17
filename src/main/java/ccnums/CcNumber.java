@@ -37,6 +37,9 @@ public abstract class CcNumber {
                 case "AmericanExpress":
                     numberObj = new AmexCcNumber(number);
                     return numberObj;
+                case "Visa":
+                    numberObj = new VisaCcNumber(number);
+                    return numberObj;
             }
         }
         //TODO don't just return null here
