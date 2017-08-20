@@ -3,16 +3,14 @@ package ccnums;
 /**
  * Created by simontowler on 17/08/2017.
  */
-class VisaCcNumber extends ccnums.CcNumber {
-
-    //instance variables
-    String number;
+class VisaCcNumber extends CcNumber {
+    //variables
     static final String issuer = "Visa";//TODO make constants for issuer strings
-    String grouping = groupingPatterns.getProperty(getIssuer());
 
     //constructor
     VisaCcNumber(String number) {
         setNumber(number);
+        setGrouping(getNumber());
     }
 
     @Override
@@ -21,23 +19,30 @@ class VisaCcNumber extends ccnums.CcNumber {
     }
 
     @Override
-    public String getIssuer() {
-        return issuer;
-    }
-
-    @Override
     public String getNumber() {
         return(number);
     }
 
     @Override
+    public String getIssuer() {
+        return issuer;
+    }
+
+    private String getGroupingPropertyName(String number) {
+        return getIssuer() + "." + number.length();
+    }
+
+    /**
+     * Sets the regex that represents the grouping pattern
+     * for this card number.
+     */
+    private void setGrouping(String number) {
+        grouping = CcNumber.groupingPatterns.getProperty(getGroupingPropertyName(number));
+    }
+
+    @Override
     public String getNumberGrouped() {
-        if (number.length() == 16) {
             return number.replaceAll(grouping, "$1 $2 $3 $4");
-        } else {
-            assert (number.length() == 13);
-            return number.replaceAll("^(\\d{4})(\\d{3})(\\d{3})(\\d{3})$", "$1 $2 $3 $4");
-        }
     }
 
 }

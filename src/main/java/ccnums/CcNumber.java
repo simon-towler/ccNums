@@ -7,11 +7,13 @@ import java.util.Properties;
 import static ccnums.CcNumsValidator.numberIsValid;
 
 public abstract class CcNumber {
-    // instance variables
-    String number = null;
-    static String issuer;
-    String grouping;
+    // variables
     static Properties groupingPatterns;
+    static String issuer;
+
+    // instance variables
+    String number;
+    String grouping;
 
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html

@@ -4,13 +4,13 @@ package ccnums;
  * Created by simontowler on 10/07/2017.
  */
 class AmexCcNumber extends ccnums.CcNumber {
-
-    //instance variables
-    String number;
+    // variables
     static final String issuer = "AmericanExpress";//TODO make constants for issuer strings
+
+    // instance variables
     String grouping = groupingPatterns.getProperty(getIssuer());
 
-    //constructor
+    // constructor
     AmexCcNumber(String number) {
         setNumber(number);
     }
