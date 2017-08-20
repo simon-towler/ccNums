@@ -44,7 +44,7 @@ public class CcNumsTests {
 
 
         //TODO remove
-        System.out.println("The Visa credit card number is: " + visaNumber02.getNumber());
+        System.out.println("When the Visa credit card number is: " + visaNumber02.getNumber());
         assertTrue(visaNumber02.getNumber().equals(visaTestNumber02));
         //TODO remove
         System.out.println("That Visa number when grouped is: " + visaNumber02.getNumberGrouped());
@@ -57,7 +57,7 @@ public class CcNumsTests {
 
 
         //TODO remove
-        System.out.println("The Visa credit card number is: " + visaNumber03.getNumber());
+        System.out.println("And when the Visa credit card number is: " + visaNumber03.getNumber());
         assertTrue(visaNumber03.getNumber().equals(visaTestNumber03));
         //TODO remove
         System.out.println("That Visa number when grouped is: " + visaNumber03.getNumberGrouped());

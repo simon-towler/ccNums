@@ -1,5 +1,8 @@
 package ccnums;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by simontowler on 17/08/2017.
  */
@@ -32,6 +35,19 @@ class VisaCcNumber extends CcNumber {
         return getIssuer() + "." + number.length();
     }
 
+    private String getGroupingReplacement() {
+        String replacement = "";
+        Pattern pattern =
+                Pattern.compile(grouping);
+        Matcher matcher =
+                pattern.matcher(number);
+        for (int i = 1; i <= matcher.groupCount(); i++) {
+            replacement += "$" + i;
+            if (i < matcher.groupCount()) replacement += groupDelimiter;
+        }
+        return replacement;
+    }
+
     /**
      * Sets the regex that represents the grouping pattern
      * for this card number.
@@ -42,7 +58,7 @@ class VisaCcNumber extends CcNumber {
 
     @Override
     public String getNumberGrouped() {
-            return number.replaceAll(grouping, "$1 $2 $3 $4");
+            return number.replaceAll(grouping, getGroupingReplacement());
     }
 
 }

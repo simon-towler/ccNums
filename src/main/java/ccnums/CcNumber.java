@@ -14,6 +14,7 @@ public abstract class CcNumber {
     // instance variables
     String number;
     String grouping;
+    String groupDelimiter = " ";
 
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
