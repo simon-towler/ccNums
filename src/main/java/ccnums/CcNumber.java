@@ -3,10 +3,16 @@ package ccnums;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static ccnums.CcNumsValidator.numberIsValid;
 
 public abstract class CcNumber {
+    // constants
+    static final String groupDelimiter = " ";
+
+
     // variables
     static Properties groupingPatterns;
     static String issuer;
@@ -14,7 +20,6 @@ public abstract class CcNumber {
     // instance variables
     String number;
     String grouping;
-    String groupDelimiter = " ";
 
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
@@ -55,6 +60,23 @@ public abstract class CcNumber {
 
     public String getNumber() {
         return(number);
+    }
+
+    String getGroupingPropertyName(String number) {
+        return getIssuer() + "." + number.length();
+    }
+
+    String getGroupingReplacement() {
+        String replacement = "";
+        Pattern pattern =
+                Pattern.compile(grouping);
+        Matcher matcher =
+                pattern.matcher(number);
+        for (int i = 1; i <= matcher.groupCount(); i++) {
+            replacement += "$" + i;
+            if (i < matcher.groupCount()) replacement += groupDelimiter;
+        }
+        return replacement;
     }
 
     abstract String getNumberGrouped();

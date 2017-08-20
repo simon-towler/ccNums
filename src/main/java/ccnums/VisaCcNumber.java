@@ -31,23 +31,6 @@ class VisaCcNumber extends CcNumber {
         return issuer;
     }
 
-    private String getGroupingPropertyName(String number) {
-        return getIssuer() + "." + number.length();
-    }
-
-    private String getGroupingReplacement() {
-        String replacement = "";
-        Pattern pattern =
-                Pattern.compile(grouping);
-        Matcher matcher =
-                pattern.matcher(number);
-        for (int i = 1; i <= matcher.groupCount(); i++) {
-            replacement += "$" + i;
-            if (i < matcher.groupCount()) replacement += groupDelimiter;
-        }
-        return replacement;
-    }
-
     /**
      * Sets the regex that represents the grouping pattern
      * for this card number.
