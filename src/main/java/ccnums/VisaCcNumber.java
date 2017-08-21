@@ -39,9 +39,4 @@ class VisaCcNumber extends CcNumber {
         grouping = CcNumber.groupingPatterns.getProperty(getGroupingPropertyName(number));
     }
 
-    @Override
-    public String getNumberGrouped() {
-            return number.replaceAll(grouping, getGroupingReplacement());
-    }
-
 }

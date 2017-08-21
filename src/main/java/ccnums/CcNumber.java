@@ -79,7 +79,9 @@ public abstract class CcNumber {
         return replacement;
     }
 
-    abstract String getNumberGrouped();
+    public String getNumberGrouped() {
+        return number.replaceAll(grouping, getGroupingReplacement());
+    }
 
     public String getIssuer() {
         return issuer;
