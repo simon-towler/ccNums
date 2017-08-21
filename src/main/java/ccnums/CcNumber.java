@@ -78,6 +78,14 @@ public abstract class CcNumber {
         }
         return replacement;
     }
+    
+    /**
+     * Sets the regex that represents the grouping pattern
+     * for this card number.
+     */
+    void setGrouping(String number) {
+        grouping = CcNumber.groupingPatterns.getProperty(getGroupingPropertyName(number));
+    }
 
     public String getNumberGrouped() {
         return number.replaceAll(grouping, getGroupingReplacement());
