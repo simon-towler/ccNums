@@ -15,10 +15,10 @@ public abstract class CcNumber {
 
     // variables
     static Properties groupingPatterns;
-    static String issuer;
 
     // instance variables
     String number;
+    String issuer;
     String grouping;
 
     // create and load properties
@@ -54,8 +54,12 @@ public abstract class CcNumber {
         return null;
     }
 
-    public void setNumber(String number) {
+    void setNumber(String number) {
         this.number = number;
+    }
+
+    void setIssuer(String issuer) {
+        this.issuer = issuer;
     }
 
     public String getNumber() {
@@ -78,7 +82,7 @@ public abstract class CcNumber {
         }
         return replacement;
     }
-    
+
     /**
      * Sets the regex that represents the grouping pattern
      * for this card number.
