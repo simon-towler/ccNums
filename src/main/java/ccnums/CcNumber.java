@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 import static ccnums.CcNumsValidator.numberIsValid;
 
 public abstract class CcNumber {
     // constants
     static final String groupDelimiter = " ";
+    static final String maskingChar = "*";
 
 
     // variables
@@ -20,6 +22,10 @@ public abstract class CcNumber {
     String number;
     String issuer;
     String grouping;
+    int[] validLengths;
+
+    // default truncator
+    TruncationStrategy truncator = new TruncateFactaFour();
 
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
@@ -54,16 +60,22 @@ public abstract class CcNumber {
         return null;
     }
 
+    // instance methods
+
     void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getNumber() {
+        return(number);
     }
 
     void setIssuer(String issuer) {
         this.issuer = issuer;
     }
 
-    public String getNumber() {
-        return(number);
+    void setValidLengths(int[] lengths) {
+        validLengths = lengths;
     }
 
     String getGroupingPropertyName(String number) {
@@ -83,6 +95,14 @@ public abstract class CcNumber {
         return replacement;
     }
 
+    public String truncate() {
+        return truncator.truncate(this);
+    }
+
+    public String mask() {
+        return truncator.mask(this);
+    }
+
     /**
      * Sets the regex that represents the grouping pattern
      * for this card number.
@@ -92,7 +112,24 @@ public abstract class CcNumber {
     }
 
     public String getNumberGrouped() {
-        return number.replaceAll(grouping, getGroupingReplacement());
+        return groupNumber(this);
+    }
+
+    String groupNumber(CcNumber number) {
+        return number.getNumber().replaceAll(grouping, getGroupingReplacement());
+    }
+
+    String groupNumber(String number) {
+        if (isValidLength(number)) {
+            String regex = grouping.replaceAll("d", "d|\\.");// TODO this works for happy path, but may not be safe
+            return number.replaceAll(regex, getGroupingReplacement());
+        } else {
+            return null; // TODO improve
+        }
+    }
+
+    boolean isValidLength(String number) {
+        return IntStream.of(validLengths).anyMatch(x -> x == number.length());
     }
 
     public String getIssuer() {

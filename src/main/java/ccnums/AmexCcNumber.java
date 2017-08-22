@@ -10,6 +10,7 @@ class AmexCcNumber extends ccnums.CcNumber {
         setNumber(number);
         setIssuer("AmericanExpress");
         setGrouping(getNumber());
+        setValidLengths(new int[]{15});//TODO load valid lengths from properties
     }
 
 }
