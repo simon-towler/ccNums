@@ -25,7 +25,7 @@ public abstract class CcNumber {
     int[] validLengths;
 
     // default truncator
-    TruncationStrategy truncator = new TruncateFactaFour();
+    static TruncationStrategy truncator = new TruncateFactaFour();
 
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
@@ -99,7 +99,7 @@ public abstract class CcNumber {
         return truncator.truncate(this);
     }
 
-    public String mask() {
+    public String mask() throws Exception {
         return truncator.mask(this);
     }
 
@@ -119,12 +119,12 @@ public abstract class CcNumber {
         return number.getNumber().replaceAll(grouping, getGroupingReplacement());
     }
 
-    String groupNumber(String number) {
+    String groupNumber(String number) throws Exception {
         if (isValidLength(number)) {
             String regex = grouping.replaceAll("d", "d|\\.");// TODO this works for happy path, but may not be safe
             return number.replaceAll(regex, getGroupingReplacement());
         } else {
-            return null; // TODO improve
+            throw new Exception("Can't group number. Invalid length."); // TODO improve
         }
     }
 
@@ -134,6 +134,10 @@ public abstract class CcNumber {
 
     public String getIssuer() {
         return issuer;
+    }
+
+    public String getMaskingChar() {
+        return maskingChar;
     }
 
 }

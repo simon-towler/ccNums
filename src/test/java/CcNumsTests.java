@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class CcNumsTests {
 
     @Test
-    public void testTruncateFactaFour() {
+    public void testTruncateFactaFour() throws Exception {
         // fixture
         String amexTestNumber = "376039019752033";//amex australia card
         CcNumber amexNumber01 = CcNums.getCcNumber(amexTestNumber);
@@ -28,13 +28,16 @@ public class CcNumsTests {
         assertTrue(testResponse2.equals("*2033"));
 
         String maskResponse1 = amexNumber01.mask();
-        System.out.println("Amex masked is: " + maskResponse1);
+        System.out.println("Amex masked to FACTA 4 is: " + maskResponse1);
         assertTrue(maskResponse1.equals("**** ****** *2033"));
 
         amexNumber01.truncator = new TruncateDssSixAndFour();
         String testResponse3 = amexNumber01.truncate();
         System.out.println("Amex truncated to PCI DSS is: " + testResponse3);
         assertTrue(testResponse3.equals("376039*2033"));
+        String testResponse4 = amexNumber01.mask();
+        System.out.println("Amex masked to PCI DSS is: " + testResponse4);
+        assertTrue(testResponse4.equals("3760 39**** *2033"));
     }
     
     @Test
