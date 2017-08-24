@@ -10,6 +10,8 @@ class VisaCcNumber extends CcNumber {
         setNumber(number);
         setIssuer("Visa");
         setGrouping(getNumber());
+        setValidLengths(new int[]{16,13});//TODO load valid lengths from properties
+
     }
 
 }

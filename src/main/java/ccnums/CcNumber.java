@@ -24,7 +24,10 @@ public abstract class CcNumber {
     String grouping;
     int[] validLengths;
 
-    // default truncator
+    /* Default truncator for all instances derived from CcNumber.
+     * Changing the value of this in any instance at run time
+     * will change truncation behaviour for all CcNumbers.
+     */
     static TruncationStrategy truncator = new TruncateFactaFour();
 
     // create and load properties
