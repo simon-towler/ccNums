@@ -30,6 +30,10 @@ public abstract class CcNumber {
      */
     static TruncationStrategy truncator = new TruncateFactaFour();
 
+    public void setTruncator(TruncationStrategy truncator) {
+        this.truncator = truncator;
+    }
+
     // create and load properties
     // modeled after https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
     static {
@@ -141,6 +145,11 @@ public abstract class CcNumber {
 
     public String getMaskingChar() {
         return maskingChar;
+    }
+
+    @Override
+    public String toString() {
+        return getNumberGrouped();
     }
 
 }
