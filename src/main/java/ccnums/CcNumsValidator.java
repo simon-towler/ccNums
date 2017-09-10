@@ -49,7 +49,12 @@ public class CcNumsValidator {
         return null;
     }
 
-    //Method taken from http://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#Java, accessed 11 July 2017
+    /*
+     *  Method taken from
+     *  http://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#Java,
+     *  accessed 11 July 2017
+     *  see http://www.gnu.org/licenses/fdl-1.2.html for copying conditions
+     */
     public static boolean passesLuhnCheck(String number){
         int s1 = 0, s2 = 0;
         String reverse = new StringBuffer(number).reverse().toString();
