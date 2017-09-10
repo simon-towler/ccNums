@@ -24,11 +24,12 @@ public abstract class CcNumber {
     String grouping;
     int[] validLengths;
 
-    /* Default truncator for all instances derived from CcNumber.
+    /*
+     * Default truncator for all instances derived from CcNumber.
      * Changing the value of this in any instance at run time
      * will change truncation behaviour for all CcNumbers.
      */
-    static TruncationStrategy truncator = new TruncateFactaFour();
+    static TruncationStrategy truncator = new TruncateDssSixAndFour();
 
     public void setTruncator(TruncationStrategy truncator) {
         this.truncator = truncator;
